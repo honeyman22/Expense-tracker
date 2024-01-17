@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  Button,
+} from "react-native";
 import { CustomInput } from "../../components/common/custom-input";
 import axios from "axios";
-import NavigationBar from "../../components/common/navigation-bar";
+import Container from "../../components/container";
+import { useFormik, validateYupSchema } from "formik";
+import { loginSchema } from "../../schema/login-schema";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,38 +32,67 @@ const LoginScreen = ({ navigation }: any) => {
       console.log(err);
     }
   };
+
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+  console.log(errors);
+
   return (
-    <SafeAreaView className="relative h-screen">
+    <Container navigation={navigation}>
       <View className="flex flex-col px-6 py-10 space-y-3">
         <Text className="text-2xl font-bold">Welcome,</Text>
         <Text>Login with your employee ID</Text>
         <View className="flex flex-col space-y-5">
           <View className="">
             <CustomInput
-              label="Email "
-              placeholder="Enter your email"
-              setValue={setEmail}
+              id="username"
+              label="Email"
+              control={control}
+              errors={errors}
+              placeholder="Enter You Email"
             />
           </View>
           <View className="">
             <CustomInput
-              label="Password "
-              placeholder="Enter your password"
-              setValue={setPassword}
+              id="password"
+              label="Password"
+              control={control}
+              errors={errors}
+              placeholder="Enter You Email"
             />
           </View>
         </View>
         <View className=" w-full">
           <TouchableOpacity
             className="bg-[#FE3A82] mt-10   h-12 rounded-lg flex items-center justify-center "
-            onPress={() => handleLogin()}
+            onPress={handleSubmit((data) => {
+              console.log(data);
+            })}
           >
             <Text className="text-base font-bold text-white ">Login</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <NavigationBar navigation={navigation} />
-    </SafeAreaView>
+    </Container>
   );
 };
 

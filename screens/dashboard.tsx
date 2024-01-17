@@ -1,14 +1,24 @@
-import React from "react";
-import { ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import NavigationBar from "../components/common/navigation-bar";
-import DashboardHeader from "./dashboard/top-header";
-import BoxExpenses from "./dashboard/expenses-box";
-import DetailedBox from "./dashboard/details-box";
+import React, { useEffect, useState } from "react";
+import { Button, ScrollView, Text, View } from "react-native";
+import DashboardHeader from "../components/dashboard/top-header";
+import BoxExpenses from "../components/dashboard/expenses-box";
+import DetailedBox from "../components/dashboard/details-box";
+import Container from "../components/container";
+import axios from "axios";
+import CategoryModal from "../components/category-modal";
 
 const Home = ({ navigation }: any) => {
+  // const [mymovies, setMymovies] = useState([]);
+  // const [open, setOpen] = useState(false);
+
+  // useEffect(() => {
+  //   axios.get("https://reactnative.dev/movies.json").then((res: any) => {
+  //     setMymovies(res?.data?.movies);
+  //   });
+  // }, []);
+
   return (
-    <ScrollView className="relative bg-white h-screen ">
+    <Container navigation={navigation}>
       <DashboardHeader navigation={navigation} />
       <View className="w-full flex flex-row justify-between px-6 ">
         <BoxExpenses />
@@ -16,12 +26,12 @@ const Home = ({ navigation }: any) => {
       </View>
       <View className="w-full mt-8  flex flex-col space-y-10 px-6 ">
         {Array(10)
-          .fill("_")
-          .map(() => (
-            <DetailedBox />
+          ?.fill("_")
+          ?.map((item: any, i: any) => (
+            <DetailedBox key={i} data={item} />
           ))}
       </View>
-    </ScrollView>
+    </Container>
   );
 };
 
