@@ -5,7 +5,7 @@ import LoginScreen from "./screens/auth/login-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/dashboard";
-import NavigationBar from "./components/common/navigation-bar";
+import ExpenseReport from "./screens/expense-report";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -20,7 +20,21 @@ export default function App() {
         <Stack.Screen
           name="home"
           component={Home}
-          options={{ title: "home", headerShown: false }}
+          options={{
+            title: "",
+            headerShown: false,
+            headerShadowVisible: false,
+            headerBackVisible: true,
+          }}
+        />
+        <Stack.Screen
+          name="expense-report"
+          component={ExpenseReport}
+          options={{
+            title: "",
+            headerShown: true,
+            headerShadowVisible: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

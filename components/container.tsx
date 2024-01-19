@@ -1,14 +1,14 @@
 // Container.js
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, ScrollViewBase } from "react-native";
 import NavigationBar from "./common/navigation-bar";
 
-const Container = ({ children, navigation }: any) => {
-  console.log(navigation.header);
+const Container = ({ children, navigation, route }: any) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 }} className="h-screen">
+      <View className="h-10 bg-white "></View>
       <ScrollView style={{ flex: 1 }}>{children}</ScrollView>
-      <NavigationBar navigation={navigation} />
+      <NavigationBar navigation={navigation} route={route} />
     </View>
   );
 };

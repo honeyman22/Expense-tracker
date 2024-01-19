@@ -7,7 +7,7 @@ import Container from "../components/container";
 import axios from "axios";
 import CategoryModal from "../components/category-modal";
 
-const Home = ({ navigation }: any) => {
+const Home = ({ navigation, route }: any) => {
   // const [mymovies, setMymovies] = useState([]);
   // const [open, setOpen] = useState(false);
 
@@ -18,7 +18,7 @@ const Home = ({ navigation }: any) => {
   // }, []);
 
   return (
-    <Container navigation={navigation}>
+    <Container navigation={navigation} route={route}>
       <DashboardHeader navigation={navigation} />
       <View className="w-full flex flex-row justify-between px-6 ">
         <BoxExpenses />

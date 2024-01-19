@@ -83,6 +83,10 @@ const LoginScreen = ({ navigation }: any) => {
         </View>
         <View className=" w-full">
           <TouchableOpacity
+            style={{
+              backgroundColor:
+                "linear-gradient(179deg,  rgba(210, 0, 109, 0.80) 114.37%))",
+            }}
             className="bg-[#FE3A82] mt-10   h-12 rounded-lg flex items-center justify-center "
             onPress={handleSubmit((data) => {
               console.log(data);

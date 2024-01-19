@@ -44,18 +44,6 @@ export const CustomInput = ({
           {errors[`${id}`].message as string}
         </Text>
       )}
-      {/* <Text>{label}</Text>
-      <TextInput
-        id={id}
-        className="border h-12 px-3 text-sm border-[#E8E8E8] w-full rounded-md"
-        placeholder={placeholder}
-        {...register}
-      />
-      {errors[`${id}`] && (
-        <Text className="text-red-500 text-sm font-normal">
-          {errors[`${id}`].message as string}
-        </Text>
-      )} */}
     </View>
   );
 };

@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const DashboardHeader = ({ navigation }: any) => {
   return (
-    <View className="flex flex-row justify-between mx-6 my-10 items-center ">
+    <View className="flex flex-row justify-between px-6 mt-2 mb-10 items-center ">
       <Text className="text-lg text-[#2B2B2B] font-medium">
         {" "}
         Good Morning , Nishan
